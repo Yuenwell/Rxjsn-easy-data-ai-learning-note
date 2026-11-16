@@ -148,7 +148,9 @@ httpx和httpx2与openai>=3.0的冲突报错，问了ai手动修改了兼容问�
 
 ## 参考来源
 
-https://github.com/datawhalechina/easy-data-x-ai
-https://github.com/datawhalechina/Hello-Agents
-https://github.com/shareAI-lab/learn-claude-code
+| 资料名称 | 参考用途 | 仓库链接 |
+| --- | --- | --- |
+| Easy Data × AI | 本次课程的教程与示例 | [datawhalechina/easy-data-x-ai](https://github.com/datawhalechina/easy-data-x-ai) |
+| Hello-Agents | Agent 相关延伸学习 | [datawhalechina/Hello-Agents](https://github.com/datawhalechina/Hello-Agents) |
+| Learn Claude Code | Agent Harness 与代码实现参考 | [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) |
 
