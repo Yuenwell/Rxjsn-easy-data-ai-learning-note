@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>学有所记 · Easy Data × AI 学习看板</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="core.js"></script>
+  <script defer src="images.js"></script>
+  <script defer src="markdown.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">学</span><span>学有所记<small>MY LEARNING SPACE</small></span></a>
+    <div class="cohort-label">2026 · 11 月示例课表</div>
+    <nav aria-label="看板导航">
+      <button class="nav-item active" data-view="overview" aria-current="page"><span aria-hidden="true">◫</span> 学习看板</button>
+      <button class="nav-item" data-view="journal"><span aria-hidden="true">✎</span> 学习日志 <span class="nav-count" id="log-count">0</span></button>
+      <button class="nav-item" data-view="about"><span aria-hidden="true">☷</span> 课表与说明</button>
+    </nav>
+    <div class="sidebar-course"><span class="eyebrow">正在学习</span><h2>Easy Data × AI</h2><p>理解原理，亲手实践。<br>每一次记录，都留下进步的线索。</p><a href="https://datawhalechina.github.io/easy-data-x-ai/course-intro.html" target="_blank" rel="noopener noreferrer">打开课程官网 <span aria-hidden="true">↗</span></a></div>
+    <div class="sidebar-bottom"><span class="tiny-dot"></span> 本地个人看板<p>记录你自己的课程进度。<br>数据仅保存在当前浏览器。</p></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div><span class="breadcrumb">学习空间</span><span class="crumb-divider">/</span><span id="page-crumb">学习看板</span></div><div class="topbar-actions"><span id="save-state" role="status" aria-live="polite">进度保存在此浏览器</span><button class="button subtle" id="export-json">导出备份</button><button class="button subtle" id="import-json">导入备份</button></div></header>
+    <main id="main-content">
+      <div id="storage-warning" class="notice warning" hidden></div>
+      <section id="overview-view" class="view">
+        <div class="page-heading"><div><div class="eyebrow" id="today-label">北京时间</div><h1>我的学习进度<span class="title-dot">.</span></h1><p>把课程拆成小步，把理解留在笔记里。</p></div><button class="button primary" data-action="new-log">＋ 记录今天</button></div>
+        <section class="hero" aria-label="当前任务与总进度">
+          <div class="hero-focus"><span class="hero-kicker" id="focus-kicker">当前关注</span><h2 id="focus-title"></h2><p id="focus-description"></p><div class="focus-meta"><span id="focus-deadline"></span><span id="focus-countdown"></span></div><button class="button dark" id="continue-task">开始学习 <span aria-hidden="true">→</span></button></div>
+          <div class="hero-progress"><div class="progress-ring" id="overall-ring" role="img" aria-label="学习进度 0%"><div><strong id="overall-percent">0<span>%</span></strong><span>学习项完成</span></div></div><div class="hero-numbers"><div><strong id="learning-count">0 / 22</strong><span>完成学习项</span></div><div><strong id="submitted-count">0 / 9</strong><span>已打卡任务</span></div></div></div>
+        </section>
+        <div class="quick-stats"><div><span class="stat-symbol" aria-hidden="true">◷</span><span>累计学习 <strong id="total-time">0 分钟</strong></span></div><div><span class="stat-symbol" aria-hidden="true">▤</span><span>学习记录 <strong id="journal-total">0 条</strong></span></div><div><span class="stat-symbol" aria-hidden="true">◉</span><span id="deadline-stat">正在读取课表</span></div><button class="text-button" data-view="about">查看课表说明 ↗</button></div>
+        <section class="task-section"><div class="section-heading"><div><h2>这一期的学习路线 <span class="muted-count">9 个任务</span></h2><p>章节勾选记录学习，任务打卡单独确认。</p></div><div class="segmented" aria-label="筛选任务"><button class="selected" data-filter="all" aria-pressed="true">全部</button><button data-filter="unfinished" aria-pressed="false">未打卡</button><button data-filter="submitted" aria-pressed="false">已打卡</button></div></div><div id="task-grid" class="task-grid"></div><div id="empty-tasks" class="empty" hidden>这个分类下还没有任务。</div></section>
+        <section class="bottom-grid"><div class="paper-card"><div class="section-heading compact"><h2>最近的学习记录</h2><button class="text-button" data-view="journal">查看全部 →</button></div><div id="recent-logs"></div></div><div class="paper-card starting-point"><span class="eyebrow">从一条记录开始</span><h2>把今天的理解记下来</h2><p>选择任务，写下自己的收获和疑问，添加截图。完成后可以按任务导出图文笔记。</p><a href="README.md" target="_blank">查看工具使用说明 ↗</a><small>初始进度为空，示例课表可以自行调整。</small></div></section>
+      </section>
+      <section id="journal-view" class="view" hidden><div class="page-heading"><div><div class="eyebrow">LEARNING JOURNAL</div><h1>记录理解，也记录疑问<span class="title-dot">.</span></h1><p>留下今天学了什么、哪里卡住，以及下一步想试什么。</p></div><div class="inline-actions"><label class="export-label" for="export-task">导出范围<select id="export-task"><option value="all">全部记录</option></select></label><button class="button" id="export-picture-notes">导出图文笔记 ZIP</button><button class="button" id="export-markdown">导出学习记录</button><button class="button primary" data-action="new-log">＋ 写一条记录</button></div></div><div id="journal-list"></div></section>
+      <section id="about-view" class="view" hidden><div class="page-heading"><div><div class="eyebrow">ABOUT THIS TOOL</div><h1>使用说明与示例课表<span class="title-dot">.</span></h1><p>开源、离线可用的个人学习工具。</p></div></div><div class="about-grid"><article class="paper-card"><h2>示例课表</h2><p>内置 Easy Data × AI 的 2026 年 11 月共学示例：9 个任务、22 个辅助学习项。日期均为北京时间（UTC+8），截止时间可在任务详情调整。</p><p>任务标题是导航概括，不代表官方验收标准；实际要求以本人参加课程的通知为准。其他课程可修改 data.js 中的任务、章节和链接。</p><div id="schedule-table"></div></article><article class="paper-card"><h2>图文记录与导出</h2><p>每条日志支持自定义标题、关联任务、文字与截图。截图可选择文件或在日志窗口粘贴，保存后点击缩略图放大。</p><p>导出范围可选单个任务、全部或未关联记录。图文 ZIP 包含 README.md 和 images 文件夹，解压后保持相对位置即可阅读或发布。</p><p>参考来源由用户填写；普通文字换行会在导出时保留。</p></article><article class="paper-card"><h2>本地保存与备份</h2><p>没有账号、云同步、遥测或自动上传。进度与截图保存在当前浏览器的 localStorage。换浏览器、移动文件或清理缓存前，请先导出 JSON 备份。</p><p>截图会压缩，每条最多 6 张，总容量有限，原图请另存。浏览器提示保存失败时，先导出备份再关闭页面。</p><p>公开分享源码时，勿把自己的备份、导出笔记或私人截图一起上传。</p></article><article class="paper-card"><h2>来源与许可</h2><p>工具代码采用 MIT 许可证。代码由 AI 辅助开发和整理，使用者应自行验证是否适合自己的用途。</p><p>课程名称、章节标题和阅读链接用于示例导航；课程内容与其他第三方材料的版权和许可归各来源，不属于本工具的 MIT 授权范围。</p><a href="https://github.com/datawhalechina/easy-data-x-ai" target="_blank" rel="noopener noreferrer">课程来源 ↗</a>　<a href="README.md" target="_blank">完整说明 ↗</a></article></div></section>
+      <footer class="footer"><span>Easy Data × AI · 个人学习看板</span><span>保留好奇，也保留记录。</span></footer>
+    </main>
+  </div>
+  <dialog id="task-dialog" aria-labelledby="task-dialog-title"><div id="task-dialog-content"></div></dialog>
+  <dialog id="log-dialog" aria-labelledby="log-dialog-title"><form id="log-form"><div class="dialog-header"><div><span class="eyebrow">学习日志</span><h2 id="log-dialog-title">记录一次学习</h2></div><button type="button" class="close-button" data-close="log-dialog" aria-label="关闭日志窗口">×</button></div><div class="dialog-body"><div class="form-row"><label>学习日期<input type="date" id="log-date" required></label><label>学习时长（分钟，可不填）<input type="number" id="log-minutes" min="1" max="1440" step="1" placeholder="例如 30"></label></div><label>关联任务<select id="log-task"></select></label><label>记录小标题（可选）<input type="text" id="log-title" maxlength="120" placeholder="例如：Git 环境配置 / 第一次 API 调用"></label><label>学到的内容 / 疑问 / 下一步<textarea id="log-content" rows="7" maxlength="10000" placeholder="今天我理解了……&#10;还不确定的是……&#10;下一步想试……" required></textarea></label><div class="image-attachments"><div class="section-heading compact"><strong>截图附件</strong><button type="button" class="button" id="add-log-images">＋ 添加截图</button></div><p id="image-capacity" class="subtle-help"></p><p class="subtle-help">PNG / JPG / WebP，每条最多 6 张，自动压缩。写完后点击“保存记录”。</p><div id="log-image-preview" class="log-gallery"></div></div><p id="log-error" class="form-error" role="alert"></p></div><div class="dialog-footer"><button type="button" class="button" data-close="log-dialog">取消</button><button type="submit" class="button primary">保存记录</button></div></form></dialog>
+  <input type="file" id="import-file" accept=".json,application/json" hidden>
+  <input type="file" id="log-image-files" accept="image/png,image/jpeg,image/webp" multiple hidden>
+  <dialog id="image-dialog" aria-label="截图预览"><div class="dialog-header"><h2 id="image-title">截图预览</h2><button type="button" class="close-button" data-close="image-dialog" aria-label="关闭截图预览">×</button></div><div class="image-full"><img id="image-full" alt="学习截图"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="notice warning">请在浏览器中启用 JavaScript，才能查看和保存学习进度。</p></noscript>
+</body>
+</html>

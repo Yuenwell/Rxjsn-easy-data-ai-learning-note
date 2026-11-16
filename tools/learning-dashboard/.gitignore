@@ -1,0 +1,15 @@
+# Personal exports and local development artifacts are not tool source.
+*.zip
+*.json
+*-学习记录-*.md
+*.log
+exports/
+backups/
+local-data/
+screenshots/
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

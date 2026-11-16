@@ -31,14 +31,22 @@
 - F0、F1、F2 的阅读与理解。
 - 实际截图、学习思考，以及问题与解决记录。
 
+## 开源学习工具
+
+[**学有所记 · 学习进度看板 →**](tools/learning-dashboard/README.md)
+
+可以下载后离线使用，记录任务进度、图文日志和参考来源，并按 Task 导出 Markdown 与截图。分享版从零进度开始，用户记录保存在各自浏览器中；源码不包含个人学习数据。工具代码采用 [MIT 许可证](tools/learning-dashboard/LICENSE)。
+
 ## 仓库结构
 
 ```text
 .
 ├── README.md              # 学习目录
-└── Task01/
-    ├── README.md          # Task01 图文笔记
-    └── images/            # 笔记引用的截图
+├── Task01/
+│   ├── README.md          # Task01 图文笔记
+│   └── images/            # 笔记引用的截图
+└── tools/
+    └── learning-dashboard/ # 可独立使用的开源学习看板
 ```
 
 后续任务会增加相应目录。代码练习随对应任务一起整理，并补充运行方法与实际结果。
