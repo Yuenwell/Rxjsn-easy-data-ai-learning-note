@@ -1,5 +1,15 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const {preserveBreaks}=require('../markdown.js');
+test('tables following a list item or paragraph get their own block',()=>{
+ const table='| 检查项 | 是 | 否 |\n| --- | --- | --- |\n| 可用 | ☑ | ☐ |';
+ for (const label of ['- 场景匹配度','角色说明']) {
+   const normalized=preserveBreaks(label+'\n'+table);
+   assert.equal(normalized,label+'\n\n'+table);
+   assert.equal(preserveBreaks(normalized),normalized);
+ }
+ const literal='~~~text\n- 场景匹配度\n'+table+'\n~~~';
+ assert.equal(preserveBreaks(literal),literal);
+});
 test('plain lines retain visible breaks; paragraphs and existing hard breaks stay stable',()=>{
  assert.equal(preserveBreaks('第一行\r\n第二行\n\n第三段'), '第一行  \n第二行\n\n第三段');
  const s='第一行  \n第二行\\\n第三行';assert.equal(preserveBreaks(s),s);assert.equal(preserveBreaks(preserveBreaks(s)),preserveBreaks(s));
