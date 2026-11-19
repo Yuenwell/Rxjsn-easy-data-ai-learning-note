@@ -1,5 +1,13 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const {preserveBreaks}=require('../markdown.js');
+test('bold spans next to prose render without changing literal syntax',()=>{
+ const input='**首 Token 延迟（Time to First Token）**比总生成时间更重要。\n示例**[详见 Task1]**。\n\x60**（x）**y\x60';
+ const expected='**首 Token 延迟（Time to First Token）** 比总生成时间更重要。  \n示例 **[详见 Task1]**。  \n\x60**（x）**y\x60';
+ assert.equal(preserveBreaks(input),expected);
+ assert.equal(preserveBreaks(expected),expected);
+ const fence='~~~text\n**（x）**y\n~~~';
+ assert.equal(preserveBreaks(fence),fence);
+});
 test('tables following a list item or paragraph get their own block',()=>{
  const table='| 检查项 | 是 | 否 |\n| --- | --- | --- |\n| 可用 | ☑ | ☐ |';
  for (const label of ['- 场景匹配度','角色说明']) {

@@ -205,7 +205,7 @@ print(response.content)
 
 非流式输出就是先长时间思考，结果出来后，一下子输出。相对的，流式输出就是已经思考出来多少字，想应跟着输出多少字。  
 对于用户来说，流式的体验远高于非流式，不让自己感觉在等待，有更高容忍度。  
-**首 Token 延迟（Time to First Token）**比总生成时间更重要。  
+**首 Token 延迟（Time to First Token）** 比总生成时间更重要。  
  LangChain 的流式输出，就是将 invoke 换成 stream
 
 ```python
@@ -303,7 +303,7 @@ llm_with_tools = llm.bind_tools([query_knowledge_base])
 
 学习日期：2026-11-19
 
-基础篇已经完成 Python 环境和依赖的安装和 API 的调用，这里不再重复演示**[详见 Task1]**  
+基础篇已经完成 Python 环境和依赖的安装和 API 的调用，这里不再重复演示 **[详见 Task1]**  
 实现截图
 
 ![学习截图 1](images/log-4d7587d5-40e1-4c71-85fd-db037cb338f8-1.jpg)

@@ -1,6 +1,23 @@
 /* Preserve plain-text editor line breaks while retaining Markdown block syntax. */
 (function (root) {
   'use strict';
+  const inlineTokens = new RegExp([
+    /(?<!`)(`+)(?!`)[^\n]*?(?<!`)\1(?!`)/,
+    /(?<![\\$])\$(?![$\s])(?:\\.|[^$\\\n])+?(?<!\s)\$(?![$\d])/,
+    /(?<=\])\((?:\\.|[^()\\]|\((?:\\.|[^()\\])*\))*\)/,
+    /<[^<>\n]+>|https?:\/\/[^\s<>]+/,
+    /(?<![\\*])\*\*(?![\s*])(?<strong>[^*\n]+?)(?<!\s)\*\*(?!\*)/
+  ].map(pattern => pattern.source).join('|'), 'gu');
+  const punctuation = /[\p{P}\x21-\x2f\x3a-\x40\x5b-\x60\x7b-\x7e]/u;
+  const touchesWord = char => !!char && !/\s/u.test(char) && !punctuation.test(char);
+  function spaceStrongProse(line) {
+    return line.replace(inlineTokens, (match, ticks, strong, offset) => {
+      if (strong === undefined) return match;
+      const before = punctuation.test(strong[0]) && touchesWord(line[offset - 1]) ? ' ' : '';
+      const after = punctuation.test(strong.at(-1)) && touchesWord(line[offset + match.length]) ? ' ' : '';
+      return before + match + after;
+    });
+  }
   function preserveBreaks(text) {
     const lines = text.replace(/\r\n?/g, '\n').split('\n');
     let fence = null, length = 0;
@@ -21,6 +38,7 @@
       }
       if (marker) { fence = marker[1][0]; length = marker[1].length; return line; }
       if (/^(?: {4}|\t)/.test(line)) return line;
+      line = spaceStrongProse(line);
       if (tableStarts.has(index) && index > 0 && lines[index - 1].trim()) return '\n' + line;
       if (!line.trim() || index === lines.length - 1 || !lines[index + 1].trim()) return line;
       if (structural(line) || inTable.has(index) || tableStarts.has(index + 1) || /^ {0,3}(?:=+|-+)\s*$/.test(lines[index + 1])) return line;
