@@ -9,7 +9,7 @@
 | 任务 | 学习主题 | 笔记 |
 | --- | --- | --- |
 | Task01 | 环境准备与课前导读 | [查看图文笔记](Task01/README.md) |
-| Task02 | Agent 场景识别、模型 API 与 AI 原生数据库基础 | 待整理 |
+| Task02 | Agent 场景识别、模型 API 与 AI 原生数据库基础 | [查看图文笔记](Task02/README.md) |
 | Task03 | RAG 产品设计与向量检索 | 待整理 |
 | Task04 | AI 应用数据层与 SQL × AI | 待整理 |
 | Task05 | 记忆系统设计与 File SQL | 待整理 |
@@ -45,6 +45,9 @@
 ├── Task01/
 │   ├── README.md          # Task01 图文笔记
 │   └── images/            # 笔记引用的截图
+├── Task02/
+│   ├── README.md          # P1、D1、I1 图文笔记
+│   └── images/
 └── tools/
     └── learning-dashboard/ # 可独立使用的开源学习看板
 ```
