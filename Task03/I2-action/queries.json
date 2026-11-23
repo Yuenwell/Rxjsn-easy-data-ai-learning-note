@@ -1,0 +1,22 @@
+[
+  {"id":"Q01","question":"同一个 Embedding 模型和版本对文档向量与查询向量的可比性有什么影响？","keywords":["Embedding","可比性","文档向量"],"evidence":[{"doc":"I2","heading":"2.1 同一空间是比较的前提"}]},
+  {"id":"Q02","question":"RRF 为什么按排名融合而不把向量距离和 BM25 分数直接相加？","keywords":["RRF","向量距离","BM25"],"evidence":[{"doc":"I1","heading":"6.1 为什么要融合排名而不是直接相加分数？"},{"doc":"I2","heading":"9.2 全文与向量结果如何融合？"}]},
+  {"id":"Q03","question":"Agentic RAG 发现证据不足时，为什么还能继续检索？","keywords":["Agentic RAG","证据不足","继续检索"],"evidence":[{"doc":"P2","heading":"Agentic RAG：关键不是更复杂，而是开始有循环"}]},
+  {"id":"Q04","question":"为什么长文档要切成 Chunk，切得太大或太小会怎样？","keywords":["长文档","Chunk","太大或太小"],"evidence":[{"doc":"I2","heading":"8.1 Chunk 太大或太小会怎样？"},{"doc":"D2","heading":"切分：把长文档变成可检索的片段"}]},
+  {"id":"Q05","question":"两个向量都做了 L2 归一化后，为什么点积等于余弦相似度？","keywords":["L2 归一化","余弦相似度"],"evidence":[{"doc":"I2","heading":"3.3 点积（Inner Product）"}]},
+  {"id":"Q06","question":"HNSW 增大 ef_search 对召回与查询延迟有什么影响？","keywords":["HNSW","ef_search","查询延迟"],"evidence":[{"doc":"I2","heading":"5.1 HNSW：在多层小世界图上导航"}]},
+  {"id":"Q07","question":"向量检索要按权限和版本限制范围，为什么要用结构化条件过滤？","keywords":["向量检索","结构化条件","权限和版本"],"evidence":[{"doc":"I2","heading":"9.1 标量过滤与向量检索的执行顺序"},{"doc":"I1","heading":"3.1 SQL 为什么仍然重要？"}]},
+  {"id":"Q08","question":"MVCC 与 Redo Log 在读写并发和崩溃恢复中分别做什么？","keywords":["MVCC","Redo Log","崩溃恢复"],"evidence":[{"doc":"I1","heading":"3.2 事务、MVCC 和恢复提供什么？"}]},
+  {"id":"Q09","question":"LSM-Tree 如何通过写入缓冲和合并来协调写入与读取？","keywords":["LSM-Tree","写入缓冲"],"evidence":[{"doc":"I1","heading":"4. LSM-Tree：写入、整理与读取如何协作"}]},
+  {"id":"Q10","question":"Agent 使用 Fork、Diff、Merge 时，怎样先试改、检查差异再合并？","keywords":["Fork","Diff","Merge"],"evidence":[{"doc":"I1","heading":"8. Fork / Diff / Merge：给 Agent 一个可写沙箱"}]},
+  {"id":"Q11","question":"Tool Use 中，应用执行工具后怎样用 tool_call_id 把结果传回模型？","keywords":["Tool Use","tool_call_id","传回模型"],"evidence":[{"doc":"D1","heading":"第三步：你的代码执行工具，结果传回模型"}]},
+  {"id":"Q12","question":"Streaming 为什么能减少用户等待，首 Token 延迟有什么用？","keywords":["Streaming","首 Token 延迟"],"evidence":[{"doc":"D1","heading":"第二部分：Streaming——为什么生产环境几乎都用流式输出"}]},
+  {"id":"Q13","question":"父子 Chunk 中，为什么用小块召回、用父块提供上下文？","keywords":["父子 Chunk","小块召回"],"evidence":[{"doc":"D2","heading":"策略三：父子 Chunk（Parent-Child / Small-to-Big）"},{"doc":"I2","heading":"8.1 Chunk 太大或太小会怎样？"}]},
+  {"id":"Q14","question":"RAGAS 的 Context Recall 与 Faithfulness 分别查什么问题？","keywords":["RAGAS","Context Recall","Faithfulness"],"evidence":[{"doc":"P2","heading":"EX2. 评估不能只看主观感觉：认识一下 RAGAS"},{"doc":"D3","heading":"再用 RAGAS 把「检索之后生成」也打上分"}]},
+  {"id":"Q15","question":"知识库缺少资料和资料没被检索到，应该怎么按归因决策树区分？","keywords":["知识库","检索到","决策树"],"evidence":[{"doc":"P2","heading":"第六部分：RAG 问题归因决策树"}]},
+  {"id":"Q16","question":"短期记忆和长期记忆的作用有什么不同，哪一种能跨越对话？","keywords":["短期记忆","长期记忆","跨越对话"],"evidence":[{"doc":"P3","heading":"第二部分：Agent 记忆的分类框架"}]},
+  {"id":"Q17","question":"File SQL 工具为什么要把读取范围限制在允许的根目录？","keywords":["File SQL","根目录","读取范围"],"evidence":[{"doc":"I4","heading":"10. 路径安全是第一等能力"}]},
+  {"id":"Q18","question":"为什么上下文窗口变大后，Agent 仍然要选择注入哪些信息？","keywords":["上下文窗口","选择注入"],"evidence":[{"doc":"I6","heading":"1. 从上下文窗口到上下文管理"},{"doc":"F1","heading":"上下文窗口：大模型的“视野范围”"}]},
+  {"id":"Q19","question":"一个问题的第一份相关文档排在第 3，怎么理解 MRR 和 Recall@K 的不同？","keywords":["MRR","Recall@K","相关文档"],"evidence":[{"doc":"I2","heading":"11.2 检索指标"}]},
+  {"id":"Q20","question":"评估适不适合做 Agent 时，三维度可行性评估要核对什么？","keywords":["Agent","三维度","可行性评估"],"evidence":[{"doc":"P1","heading":"第二部分：三维度可行性评估"}]}
+]
