@@ -287,30 +287,32 @@ Embedding 模型改把文本、图片、音频等对象转换为固定维度的�
 选择距离函数不能只看数据库支持什么，还要与 Embedding 模型的训练方式匹配。常见的三种度量是欧氏距离、余弦相似度和点积。  
 **A.欧式距离（L2）**
 
-$$
+```math
 d_{L2}(\mathbf{x},\mathbf{y})=\sqrt{\sum_{i=1}^{n}(x_i-y_i)^2}
-$$
+```
+
 L2 衡量两个点的绝对空间距离，**值越小越相似**。它既受方向影响，也受向量长度影响，**适合关注绝对数值差异，或模型明确以 L2 距离训练和评测的场景**。
 
 **B.余弦相似度**
 
-$$
+```math
 \cos(\mathbf{x},\mathbf{y})=\frac{\mathbf{x}\cdot\mathbf{y}}{\lVert\mathbf{x}\rVert_2\,\lVert\mathbf{y}\rVert_2}
-$$
+```
 
 余弦相似度关注方向，弱化向量长度。常用于文本语义检索。
 
 **C.点积（Inner Product）**
 
-$$
+```math
 \operatorname{IP}(\mathbf{x},\mathbf{y})=\sum_{i=1}^{n}x_{i}y_{i}
-$$
+```
+
 点积同时受方向和模长影响，值越大通常表示越相似。  
 若向量已经做 L2 归一化，则点积与余弦相似度等价：
 
-$$
+```math
 \lVert\mathbf{x}\rVert_2=\lVert\mathbf{y}\rVert_2=1 \Rightarrow\mathbf{x}\cdot\mathbf{y}=\cos(\mathbf{x},\mathbf{y})
-$$
+```
 
 4.如何选择
 
@@ -467,37 +469,39 @@ Chunk 入库时应保留：
 检索指标:  
 **Recall@K**:所有相关文档中，有多少出现在前 K 条结果：
 
-$$
+```math
 Recall@K=\frac{\lvert TopK \cap Relevant \rvert}{\lvert Relevant \rvert}
-$$
+```
 
 **Precision@K**：前 K 条结果中，有多少是真正相关：
 
-$$
+```math
 Precision@K=\frac{\lvert TopK \cap Relevant \rvert}{K}
-$$
+```
 
 **MRR**：关注第一个相关结果出现的位置：
 
-$$
+```math
 MRR=\frac{1}{\lvert Q \rvert} \sum_{q \in Q}\frac{1}{rank_{q}}
-$$
+```
 
 若相关性有相关的等级，则可以使用**nDCG@K**：
 
-$$
+```math
 nDCG@K=\frac{DCG@K}{IDCG@K}
-$$
+```
+
 其中 DCG@K 和 IDCG@K 分别为：
 
-$$
+```math
 DCG@K=\sum_{i=1}^{K}{\frac{2^{rel_{i}}-1}{\log_{2}{i+1}}}
-$$
+```
 
-$$
+```math
 IDCG@K=\sum_{i=1}^{K}{\frac{2^{rel_{i}^{*}}-1}{\log_{2}{i+1}}}
-$$
-其中${rel_{i}}$表明第$i$个结果的相关等级；$\log_{2}{i+1}$表明位置折扣，越靠后权重越低；K 表明只看前 K 个结果。${rel_{i}^{*}}$表明是理想顺序的第$i$个结果。
+```
+
+其中 $`{rel_{i}}`$ 表明第 $`i`$ 个结果的相关等级； $`\log_{2}{i+1}`$ 表明位置折扣，越靠后权重越低；K 表明只看前 K 个结果。 $`{rel_{i}^{*}}`$ 表明是理想顺序的第 $`i`$ 个结果。
 
 RAG 的最终答案还应评估：
 
