@@ -305,7 +305,7 @@ L2 衡量两个点的绝对空间距离，**值越小越相似**。它既受方�
 **C.点积（Inner Product）**
 
 ```math
-\operatorname{IP}(\mathbf{x},\mathbf{y})=\sum_{i=1}^{n}x_{i}y_{i}
+\mathrm{IP}(\mathbf{x},\mathbf{y})=\sum_{i=1}^{n}x_{i}y_{i}
 ```
 
 点积同时受方向和模长影响，值越大通常表示越相似。  
