@@ -336,7 +336,7 @@ device + inode + size + mtime_ns
 这表明**只读也是有风险的**，路径安全的检查如下：
 
 1. 功能是否启用  
-2. ecure_file_priv 是否配置  
+2. secure_file_priv 是否配置  
 3. 路径规范化与 realpath  
 4. 是否位于允许根目录  
 5. 是否为普通文件  
