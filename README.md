@@ -12,7 +12,7 @@
 | Task02 | Agent 场景识别、模型 API 与 AI 原生数据库基础 | [查看图文笔记](Task02/README.md) |
 | Task03 | RAG 产品设计与向量检索 | [查看图文笔记](Task03/README.md) · [I2 课后行动](Task03/I2-action/README.md) |
 | Task04 | AI 应用数据层与 SQL × AI | [查看图文笔记](Task04/README.md) · [D2 课后行动](Task04/D2-action/README.md) · [I3 课后行动](Task04/I3-action/README.md) |
-| Task05 | 记忆系统设计与 File SQL | 待整理 |
+| Task05 | 记忆系统设计与 File SQL | [查看图文笔记](Task05/README.md) |
 | Task06 | Agentic RAG 实战与 AI 列 | 待整理 |
 | Task07 | Skill 知识管理与上下文工程 | 待整理 |
 | Task08 | Agent 记忆系统开发与 PowerContext | 待整理 |
@@ -57,6 +57,9 @@
 │   ├── images/
 │   ├── D2-action/         # 电子资料的三路检索对照
 │   └── I3-action/         # 产品评论智能加工实验
+├── Task05/
+│   ├── README.md          # P3、I4 图文笔记
+│   └── images/
 └── tools/
     └── learning-dashboard/ # 可独立使用的开源学习看板
 ```
